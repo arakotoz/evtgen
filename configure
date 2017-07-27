@@ -139,7 +139,7 @@ check_extlibs () {
     fi
 
     TAUOLALIBLIST="-lTauolaCxxInterface -lTauolaFortran"
-    PYTHIALIBLIST="-lpythia8 -llhapdfdummy"
+    PYTHIALIBLIST="-lpythia8  "
 
 }
 
@@ -185,7 +185,7 @@ echo "Platform is $ARCH"
 FFLAGS="${FFLAGS_OPT}"
 CFLAGS="${CFLAGS_OPT}"
 CXXFLAGS="${CXXFLAGS_OPT}"
-FLIBS="-lfrtbegin -lg2c"
+FLIBS=" "
 SOFLAGS="-soname"
 
 if [ ${COMPMODE} = OPT ]; then
@@ -202,7 +202,7 @@ if [ $ARCH = Linux ]; then
   FFLAGS="${FFLAGS_OPT} -Wno-globals"
   CFLAGS="${CFLAGS_OPT}"
   CXXFLAGS="${CXXFLAGS_OPT}"
-  FLIBS="-lfrtbegin -lg2c"
+  FLIBS=" "
   if [ ${COMPMODE} = OPT ]; then
     FFLAGS="${FFLAGS_OPT}"
     CFLAGS="${CFLAGS_OPT}"
