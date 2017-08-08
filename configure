@@ -157,12 +157,12 @@ echo  "Compilation mode is ${COMPMODE}"
 # User-changeable part, experts  -----------------------------
 #
 CXX=g++
-CXXFLAGS_OPT="-O2 -Wall"
+CXXFLAGS_OPT="-O2 -g -Wall"
 CXXFLAGS_DBG="-g -Wall"
-CFLAGS_OPT=-O2
+CFLAGS_OPT="-O2 -g"
 CFLAGS_DBG=-g
 FC=gfortran
-FFLAGS_OPT="-O2 -Wuninitialized"
+FFLAGS_OPT="-O2 -g -Wuninitialized"
 FFLAGS_DBG=-g
  
 FFLAGSSHARED=-fPIC
