@@ -253,7 +253,7 @@ fi
 
 # Mac OS platform with gcc4
 if [[ $ARCH == Darwin* ]]; then
-  tt=`gfortran -print-search-dirs|grep libraries|cut -d'=' -f2|sed  's/:/ /g'`
+  tt=`gfortran -print-search-dirs | grep install | cut -d ':' -f2 | sed 's/$/..\/..\/..\//'`
   LIBGFORTRANLOCATION=''
   for i in $tt
   do
