@@ -157,7 +157,7 @@ echo  "Compilation mode is ${COMPMODE}"
 # User-changeable part, experts  -----------------------------
 #
 CXX=g++
-CXXFLAGS_OPT="-O2 -Wall -std=c++11"
+CXXFLAGS_OPT="-O2 -Wall"
 CXXFLAGS_DBG="-g -Wall"
 CFLAGS_OPT=-O2
 CFLAGS_DBG=-g
@@ -247,10 +247,6 @@ if [ $gccVar -le 4 ]; then
   fi
 fi
 
-if [ $CPP11 = 1 ]; then
-  echo "c++11 is enabled"
-fi
-
 # Mac OS platform with gcc4
 if [[ $ARCH == Darwin* ]]; then
   tt=`gfortran -print-search-dirs | grep install | cut -d ':' -f2 | sed 's/$/..\/..\/..\//'`
@@ -267,8 +263,13 @@ if [[ $ARCH == Darwin* ]]; then
       break
     fi
   done
+  CPP11=1
   FLIBS="-L${LIBGFORTRANLOCATION} -lgfortran"
   SOFLAGS="-install_name"
+fi
+
+if [ $CPP11 = 1 ]; then
+  echo "c++11 is enabled"
 fi
 
 #Platform & opt/dbg - independent flags and variables:
