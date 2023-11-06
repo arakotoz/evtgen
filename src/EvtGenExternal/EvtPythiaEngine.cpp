@@ -59,11 +59,11 @@ EvtPythiaEngine::EvtPythiaEngine( std::string xmlDir, bool convertPhysCodes,
 
     EvtGenReport( EVTGEN_INFO, "EvtGen" )
         << "Creating generic Pythia generator" << endl;
-    _genericPythiaGen = std::make_unique<Pythia8::Pythia>( xmlDir );
+    _genericPythiaGen = std::make_shared<Pythia8::Pythia>( xmlDir );
 
     EvtGenReport( EVTGEN_INFO, "EvtGen" )
         << "Creating alias Pythia generator" << endl;
-    _aliasPythiaGen = std::make_unique<Pythia8::Pythia>( xmlDir, false );
+    _aliasPythiaGen = std::make_shared<Pythia8::Pythia>( xmlDir, false );
 
     _thePythiaGenerator = 0;
     _daugPDGVector.clear();
@@ -75,7 +75,7 @@ EvtPythiaEngine::EvtPythiaEngine( std::string xmlDir, bool convertPhysCodes,
     // from EvtGen for Pythia 8.
     _useEvtGenRandom = useEvtGenRandom;
 
-    _evtgenRandom = std::make_unique<EvtPythiaRandom>();
+    _evtgenRandom = std::make_shared<EvtPythiaRandom>();
 
     _initialised = false;
 }
@@ -128,8 +128,8 @@ void EvtPythiaEngine::initialise()
 
     // Set the random number generator
     if ( _useEvtGenRandom == true ) {
-        _genericPythiaGen->setRndmEnginePtr( _evtgenRandom.get() );
-        _aliasPythiaGen->setRndmEnginePtr( _evtgenRandom.get() );
+        _genericPythiaGen->setRndmEnginePtr( _evtgenRandom );
+        _aliasPythiaGen->setRndmEnginePtr( _evtgenRandom );
     }
 
     _genericPythiaGen->init();

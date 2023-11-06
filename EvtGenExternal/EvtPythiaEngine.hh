@@ -70,8 +70,8 @@ class EvtPythiaEngine : public EvtAbsExternalGen {
 
     int getModeInt( EvtDecayBase* decayModel );
 
-    std::unique_ptr<Pythia8::Pythia> _genericPythiaGen;
-    std::unique_ptr<Pythia8::Pythia> _aliasPythiaGen;
+    std::shared_ptr<Pythia8::Pythia> _genericPythiaGen;
+    std::shared_ptr<Pythia8::Pythia> _aliasPythiaGen;
     Pythia8::Pythia* _thePythiaGenerator;
 
     std::vector<int> _daugPDGVector;
@@ -82,7 +82,7 @@ class EvtPythiaEngine : public EvtAbsExternalGen {
 
     bool _convertPhysCodes, _initialised, _useEvtGenRandom;
 
-    std::unique_ptr<EvtPythiaRandom> _evtgenRandom;
+    std::shared_ptr<EvtPythiaRandom> _evtgenRandom;
 
     std::map<int, int> _addedPDGCodes;
 };
